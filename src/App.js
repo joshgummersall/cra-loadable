@@ -1,7 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import logo from "./logo.svg";
 
-function App() {
+import { Foo, Bar } from "./loadable";
+import { Switch, Route, Link } from "react-router-dom";
+
+export default function App() {
   return (
     <div className="App">
       <header className="App-header">
@@ -9,17 +12,18 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Link className="App-link" to="/foo">
+          Foo
+        </Link>
+        <Link className="App-link" to="/bar">
+          Bar
+        </Link>
       </header>
+
+      <Switch>
+        <Route path="/foo" component={Foo} />
+        <Route path="/bar" component={Bar} />
+      </Switch>
     </div>
   );
 }
-
-export default App;
